@@ -1,0 +1,49 @@
+methods:
+
+
+OVERVIEW:
+1. Merge paired-end reads with PEAR
+2. Quality filter with usearch
+3. Remove primers with cutadapt
+4. Reverse complement appropriate sequences with seqtk
+5. Remove sequences containing homopolymers (BSD Unix: grep; awk)
+6. Consolidate identical sequences with usearch
+7. Remove singletons with usearch
+8. Cluster sequences into OTUs using usearch
+9. BLAST clusters using blastn
+10. Perform common ancestor grouping in MEGAN.
+
+We aligned our primers with a sampling of sequences from GenBank, including species from several genera of interest (Hippolyte, Balanus, Idotea, Pugettia, Mytilus) and found the number of base pairs (bp) between primers is 114 for all but Pugettia and Mytilus (115). Therefore, the total length of the fragments sequenced is expected to be approximately 158 bp (22 bp forward primer + 22 bp reverse primer + 114 bp region between primers).
+
+After trimming nucleotide adapter regions from the sequences, the reads in each direction are 151 bp. Thus, we expect the forward and reverse read to overlap by about 144 bp (i.e., 144 bp of each 158 bp long fragment were sequenced in both the forward and reverse direction).
+
+The forward and reverse reads were merged using PEAR v0.9.4, which uses an assembly score based on the quality score of each base call along with sequence matches to generate a single sequence representing the entire sequence covered by both reads. 
+
+
+We specified the following parameters in PEAR v0.9.4:
+
+Reads were discarded if > 0.01 of the bases were uncalled. % originally using 1
+
+If a read contained two consecutive base calls with a quality score less than 15 (i.e. probability of incorrect base call = 0.0316), (quality score 20 = 0.01 probability of incorrect base call) these bases and all subsequent bases were removed from the read. If the resulting read was not longer than 1 bp, it was discarded.
+
+The forward and reverse reads must overlap by at least 70 bp, the assembled sequences must be between 50 and 168  bp long.
+
+For each merged pair, PEAR uses the observed expected alignment score to calculate a P-value representing the probability that the overlap of the two reads is due to chance alone. Reads for which this P-value exceeded 0.01 were not assembled and omitted from the analysis.
+
+Reads that did not meet these criteria were discarded from further analyses.
+
+We 
+
+
+
+FROM PEAR PUB:
+Minimal quality score for trimming
+It is common to trim the reads and use their high quality part due to the low quality of base calls toward the end of Illumina reads (Caporaso et al., 2011). Consequently, PEAR includes the option to trim unmerged reads that contain at least two consecutive bases with quality scores lower than a user-speci- fied minimal quality score value.
+Minimal length of output sequences
+PEAR discards merged sequences or trimmed unmerged reads
+that are shorter than this threshold.
+Maximal length of the output sequences
+PEAR discards sequences longer than the specified maximal
+length.
+Maximal proportion of uncalled bases
+This parameter allows for discarding reads that contain more than the specified proportion of uncalled bases N. When the value is set to 0, it will discard all reads containing one or more uncalled bases N.
