@@ -7,6 +7,7 @@ This project will be an analysis of tidal eDNA samples collected from around fiv
 ### Repository Directory Structure
 In my directory I have included the following files:
   - Raw
+  - Merged
   - Cleaned
   - Analysis
   - Figures
@@ -14,6 +15,8 @@ In my directory I have included the following files:
   - Jupyter_Notebooks
   
 The file labelled "Raw" contains two FASTQ files containing raw sequence data from one library of an Illumina MiSeq run. One file is the forward read and the other is the reserve read. These files contain information from 14 individual samples. Each sample will contain hundreds of sequences correspondings to different organisms. 
+
+The "Merged" folder contains the fastq files of the merged and assembled forward and reverse raw files. 
 
 The "Cleaned" file will contain those same FASTQ files one they are cleaned and quality control programs have rid the sequences of less desirable data.
 
