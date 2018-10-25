@@ -7,6 +7,7 @@ This project will be an analysis of tidal eDNA samples collected from around fiv
 ### Repository Directory Structure
 In my directory I have included the following files:
   - Raw
+  - Merged
   - Cleaned
   - Analysis
   - Figures
@@ -14,6 +15,8 @@ In my directory I have included the following files:
   - Jupyter_Notebooks
   
 The file labelled "Raw" contains two FASTQ files containing raw sequence data from one library of an Illumina MiSeq run. One file is the forward read and the other is the reserve read. These files contain information from 14 individual samples. Each sample will contain hundreds of sequences correspondings to different organisms. 
+
+The "Merged" folder contains the fastq files of the merged and assembled forward and reverse raw files. 
 
 The "Cleaned" file will contain those same FASTQ files one they are cleaned and quality control programs have rid the sequences of less desirable data.
 
@@ -40,3 +43,8 @@ The following steps must be completed:
   10. Perform common ancestor grouping in MEGAN.
   
 My goal is to complete at least steps 1-4 in the next few weeks. This will mean that the data contained in the FASTQ files with be cleaned, primer and barcode sequences will be removed, and I will be left to pure sequence data from organisms. 
+
+### Work Flow
+All script will be found inthr eDNA-Tides jupyter notebook. Before starting analysis, I wanted to visualize the data in a graphical format. To do this I used FASTQC. The program resulted in two zip files and two html files (one of each for the forward and reverse files. These files are included in th folder labeled "Raw".
+
+The next step was to merge the forward and reverse reads into one assembled and usable file. Pear was used using basic commmands, however additional options of a maximum read length (350) and a quality threshold of zero were added. The read length was chosen because of the length of the CO1 sequences with the added length of barcodes and adaptors. The length is slightly longer than needed to ensure no important reads are left out. The resulting files are all in FASTQ format and include an assembled read, a discared read, and two disassembled read files. The assembled read file is the one that will be used moving forward. All of these files are located in the folder labelled "Merged". 
