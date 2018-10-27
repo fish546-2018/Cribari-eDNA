@@ -8,7 +8,8 @@ This project will be an analysis of tidal eDNA samples collected from around fiv
 **In my directory I have included the following files:**
 - Raw
 - Merged
-- Cleaned
+- FASTA
+- Demultiplexed
 - Analysis
 - Figures
 - Tables
@@ -18,9 +19,11 @@ This project will be an analysis of tidal eDNA samples collected from around fiv
   
 The file labelled "Raw" contains two FASTQ files containing raw sequence data from one library of an Illumina MiSeq run. One file is the forward read and the other is the reserve read. These files contain information from 14 individual samples. Each sample will contain hundreds of sequences correspondings to different organisms. 
 
-The "Merged" folder contains the fastq files of the merged and assembled forward and reverse raw files. 
+The "Merged" folder contains the FASTQ files of the merged and assembled forward and reverse raw files. 
 
-The "Cleaned" file will contain those same FASTQ files one they are cleaned and quality control programs have rid the sequences of less desirable data.
+The "FASTA" folder contains the converted FASTQ file as well as the FASTA files generated from the tag and primer sequences.
+
+The "Demultiplexed" folder contains 16 FASTA files, one for each sample included in the original library.
 
 "Analysis" will contain all outputs for various analyses that are done.
 
@@ -37,18 +40,21 @@ The "Cleaned" file will contain those same FASTQ files one they are cleaned and 
 
 ## Project Timeline
 The following steps must be completed:
-  1. Merge paired-end reads with PEAR
-  2. Quality filter with usearch
-  3. Remove primers with cutadapt
-  4. Reverse complement appropriate sequences with seqtk
-  5. Remove sequences containing homopolymers (BSD Unix: grep; awk)
-  6. Consolidate identical sequences with usearch
-  7. Remove singletons with usearch
-  8. Cluster sequences into OTUs using usearch
-  9. BLAST clusters using blastn
-  10. Perform common ancestor grouping in MEGAN.
-  
-My goal is to complete at least steps 1-4 in the next few weeks. This will mean that the data contained in the FASTQ files with be cleaned, primer and barcode sequences will be removed, and I will be left to pure sequence data from organisms. 
+ - [x] 1. Visualize data with FASTQC
+ - [x] 2. Merge paired-end reads with PEAR
+ - [x] 3. Convert FASTQ to FASTA
+ - [x] 4. Remove tags with cutadapt
+ - [x] 5. Demultiplex sequences
+ - [ ] 6. Reverse complement appropriate sequences with seqtk and remove primers
+ - [ ] 7. Remove sequences containing homopolymers (BSD Unix: grep; awk)
+ - [ ] 8. Consolidate identical sequences with usearch
+ - [ ] 9. Remove singletons with usearch
+ - [ ] 10. Cluster sequences into OTUs using usearch
+ - [ ] 11. BLAST clusters using blastn
+ - [ ] 12. Perform common ancestor grouping in MEGAN.
+
+#### Goals for weeks 4/5
+My goal is to complete at least steps 1-4 in the next few weeks. This will mean that the data contained in the FASTQ files with be cleaned, tag sequences will be removed, and I will be left with 16 demultiplexed sequences in FASTA format.
 
 ## Work Flow
 All script will be found inthr eDNA-Tides jupyter notebook. Before starting analysis, I wanted to visualize the data in a graphical format. To do this I used FASTQC. The program resulted in two zip files and two html files (one of each for the forward and reverse files. These files are included in th folder labeled "Raw".
