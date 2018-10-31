@@ -51,7 +51,6 @@ The following steps must be completed:
  - [ ] 9. Remove singletons with usearch
  - [ ] 10. Cluster sequences into OTUs using usearch
  - [ ] 11. BLAST clusters using blastn
- - [ ] 12. Perform common ancestor grouping in MEGAN.
 
 #### Goals for weeks 4/5
 My goal is to complete at least steps 1-4 in the next few weeks. This will mean that the data contained in the FASTQ files with be cleaned, tag sequences will be removed, and I will be left with 16 demultiplexed sequences in FASTA format.

@@ -8,3 +8,8 @@ The needed programs have been successfully installed and include PEAR, cutadapt,
 10.25.18
 
 The two FASTQ files have been merged into one assemble read in the form of another FASTQ file. Some quality control was done and a max read length of 350 was added. 
+
+
+10.27.18
+
+The assembled FASTQ file has been converted to a FASTA. I am in the procress of removing the tags and demultiplexing, but have run into a snag with my code. The code should remove the individual tags, as well as separate the large file into 16 separate files, one for each sample within the library. I want to also name those 16 files by tag name. This is where I am having the trouble.
