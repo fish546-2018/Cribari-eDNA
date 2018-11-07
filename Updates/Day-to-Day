@@ -19,3 +19,7 @@ The assembled FASTQ file has been converted to a FASTA. I am in the procress of 
 The original FASTA file was split into 16 separate demultiplexed files based on the tag sequence (found in "Demultiplexed"). Now that the tag sequences were removed, the primer sequences could not be removed. The forward and reverse primers were successfully removed from the sequences of one of the demultiplexed files. I tried to remove the primers from all of the files at onces, however was unsuccessful and decided to move forward with one. This was also the case for removing the reverse complemented primer sequences from the file. 
 
 In order to move forward and learn the steps, I continued to work with the one demultiplexed file that I was sucessfully able to removed the primers from. This file can be found in the folder "NoPrimers". The program vsearch was used to dereplicated these sequences and remove singletons (found in "Derep"). This output could not be read by swarm for clustering until all spaces in the FASTA file were removed. Once removed, the sequences were clustered and assigned an abundance estimate. This output can be found in a .txt file in the "Cluster" folder. 
+
+11.06.18 
+
+Using the xargs command I was able to complete the primer removal and dereplication of the other 15 demultiplexed files. I must now figure out a way to use the sed command in a loop to remove the spaces from the dereplicated files in order to cluster. 
