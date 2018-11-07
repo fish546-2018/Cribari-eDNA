@@ -54,17 +54,18 @@ The following steps must be completed:
  - [x] 3. Convert FASTQ to FASTA
  - [x] 4. Remove tags with cutadapt
  - [x] 5. Demultiplex sequences
- - [X] 6. Consolidate identical sequences with vsearch
- - [X] 7. Remove singletons with vsearch
- - [X] 8. Cluster sequences into OTUs using swarm
- - [ ] 9. Remove sequences containing homopolymers (BSD Unix: grep; awk)
- - [ ] 10. BLAST clusters using blastn
+ - [X] 6. Remove primers
+ - [X] 7. Consolidate identical sequences with vsearch
+ - [X] 8. Remove singletons with vsearch
+ - [X] 9. Cluster sequences into OTUs using swarm
+ - [ ] 10. Remove sequences containing homopolymers (BSD Unix: grep; awk)
+ - [ ] 11. BLAST clusters using blastn
 
 #### Goals for weeks 4/5
-My goal is to complete at least steps 1-4 in the next few weeks. This will mean that the data contained in the FASTQ files with be cleaned, tag sequences will be removed, and I will be left with 16 demultiplexed sequences in FASTA format.
+My goal is to complete at least steps 1-5 in the next few weeks. This will mean that the data contained in the FASTQ files with be cleaned, tag sequences will be removed, and I will be left with 16 demultiplexed sequences in FASTA format.
 
 #### Update: Progress as of Week 5
-At the end of week 5 I have completed 8 of 10 steps for one of the demultiplexed files. Because there are 16 files to be analyzed, the easiest way to run through the steps is to create a for loop that will run all of the commands on all of the files. As I try to figure out how to do this, I have continued through the steps using just one of the files in order to gain understanding of how to work with the data. As of right now, I have a text file that contains all of the clustered sequences for one of the demultiplexed files. The next step is to remove the homopolymers and run it through blast. 
+At the end of week 5 I have completed 9 of 11 steps for one of the demultiplexed files. Because there are 16 files to be analyzed, the easiest way to run through the steps is to create a for loop that will run all of the commands on all of the files. As I try to figure out how to do this, I have continued through the steps using just one of the files in order to gain understanding of how to work with the data. As of right now, I have a text file that contains all of the clustered sequences for one of the demultiplexed files. The next step is to remove the homopolymers and run it through blast. 
 
 #### Goals for week 10
 I must first complete the pipeline by removing homopolymers and running the sequences through blast for the first demultiplexed file. By week 10, my goal is to complete all of these steps for the remaining 15 demultiplexed files. I plan to create a for loop in order to do this more easily, however will do it the long way if necessary. As of right now, I am ignoring all reverse complement sequences, however if time permits, I plan to go back into the pipeline and analyze those as well. 
@@ -79,3 +80,5 @@ The next step was to merge the forward and reverse reads into one assembled and 
 The assembled FASTQ file was converted to a FASTA for further use. The sequences were demultiplexed and tag sequences were removed using cutadapt. In doing so, the original FASTA file was split into 16 separate demultiplexed files based on the tag sequence (found in "Demultiplexed"). Now that the tag sequences were removed, the primer sequences could not be removed. The forward and reverse primers were successfully removed from the sequences of one of the demultiplexed files. I tried to remove the primers from all of the files at onces, however was unsuccessful and decided to move forward with one. This was also the case for removing the reverse complemented primer sequences from the file. 
 
 In order to move forward and learn the steps, I continued to work with the one demultiplexed file that I was sucessfully able to removed the primers from. This file can be found in the folder "NoPrimers". The program vsearch was used to dereplicated these sequences and remove singletons (found in "Derep"). This output could not be read by swarm for clustering until all spaces in the FASTA file were removed. Once removed, the sequences were clustered and assigned an abundance estimate. This output can be found in a .txt file in the "Cluster" folder. 
+
+Using the xargs command I was able to complete steps 6-8 with the remaining 15 demultiplexed files. 
