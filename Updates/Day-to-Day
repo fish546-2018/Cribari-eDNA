@@ -23,3 +23,7 @@ In order to move forward and learn the steps, I continued to work with the one d
 11.06.18 
 
 Using the xargs command I was able to complete the primer removal and dereplication of the other 15 demultiplexed files. I must now figure out a way to use the sed command in a loop to remove the spaces from the dereplicated files in order to cluster. 
+
+11.08.18 
+
+Searching the internet I could not figure out how to use an output option with the sed command. Instead I recreated dereped files without spaces individually. Due to the nature of the command, I was able to run all 16 lines (creating 16 new files with no spaces) in one chunk of code. These files are also found in the "Derep" folder but have a NOSP in the beginning of the file name. I was then able to use find and xargs again in combination with swarm to cluster the sequences. These are found in the "Cluster" folder
