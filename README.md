@@ -13,6 +13,7 @@ This project will be an analysis of tidal eDNA samples collected from around fiv
 - NoPrimers
 - Derep
 - Cluster
+- Blasting
 - Figures
 - Tables
 - Jupyter_Notebooks
@@ -33,6 +34,8 @@ The "Demultiplexed" folder contains 16 FASTA files, one for each sample included
 "Derep" contains two dereplicated sequence files from one . One is the original output of the dereplicating. The second is the same file with all spaces removed. This step was needed for clustering.
 
 "Cluster" contains one txt files that is all of the clustered sequences, including abundance estimates. 
+
+"Blasting" will contain information gained from blasting the clustered sequences. 
 
 "Figures" will contain any graphs or visual representations of the data.
 
@@ -71,6 +74,9 @@ At the end of week 5 I have completed 9 of 11 steps for one of the demultiplexed
 I must first complete the pipeline by removing homopolymers and running the sequences through blast for the first demultiplexed file. By week 10, my goal is to complete all of these steps for the remaining 15 demultiplexed files. I plan to create a for loop in order to do this more easily, however will do it the long way if necessary. As of right now, I am ignoring all reverse complement sequences, however if time permits, I plan to go back into the pipeline and analyze those as well. 
 
 If I am able to run blast successly on the first demultiplexed file, I will call the a success, but my goal is to attempt to do this whole pipeline will all 16 files. My overall goal in this class was to gain an understanding of how these programs work and be able to navigate through them with some knowledge of what commands can do. I believe I have done that thus far, but am continuing to grow that knowledge every week. 
+
+#### Update: Progress as of Week 6
+
 
 ## Work Flow
 All script will be found inthr eDNA-Tides jupyter notebook. Before starting analysis, I wanted to visualize the data in a graphical format. To do this I used FASTQC. The program resulted in two zip files and two html files (one of each for the forward and reverse files. These files are included in th folder labeled "Raw".
