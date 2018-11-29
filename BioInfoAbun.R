@@ -30,8 +30,8 @@ all.in.one.df %>%
   group_by(Sample,Match) %>% 
   dplyr::summarise(nReads = sum(Size)) -> FinalAbun
 
-ggplot(data = FinalAbun, aes(x=Match, y=Sample))+
-  geom_bin2d(fill="tomato")+
+ggplot(data = FinalAbun, aes(x=Match, y=Sample, fill=nReads))+
+  geom_bin2d()+
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 
 
