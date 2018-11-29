@@ -1,8 +1,55 @@
 # Analysis of eDNA water samples from intertidal regions of the Hood Canal
 
-## Project Description
+## Project Description & Objective
 This project will be an analysis of tidal eDNA samples collected from around three State parks along the Hood Canal. The goal of the larger project was to differentiate marine communities from these areas based on OA levels and other environmental factors and investigate whether the communities change with changes in tides. The goal for this sub-project is to successful take a library of raw sequenced data, clean the data using various functions in python and unix, to a point that I can successful blast individual clustered sequences and assign them to taxa. The taxon abundances will be the final visual for this project. 
 
+## Question
+What are the most abundant taxa found using environmental DNA collected from three state parks along the hood canal?  
+
+## Project Timeline & Methods
+The following steps must be completed:
+ - [x] 1. Visualize data with FASTQC
+ - [x] 2. Merge paired-end reads with PEAR
+ - [x] 3. Convert FASTQ to FASTA
+ - [x] 4. Remove tags with cutadapt
+ - [x] 5. Demultiplex sequences
+ - [X] 6. Remove primers
+ - [X] 7. Consolidate identical sequences with vsearch
+ - [X] 8. Remove singletons with vsearch
+ - [X] 9. Cluster sequences into OTUs using swarm
+ - [X] 10. BLAST clusters using blastn
+ - [X] 11. Visualize Taxon abundances
+
+#### _Goals for weeks 4/5_
+_My goal is to complete at least steps 1-5 in the next few weeks. This will mean that the data contained in the FASTQ files with be cleaned, tag sequences will be removed, and I will be left with 16 demultiplexed sequences in FASTA format._
+
+#### Update: Progress as of Week 5
+At the end of week 5 I have completed 9 of 11 steps for one of the demultiplexed files. Because there are 16 files to be analyzed, the easiest way to run through the steps is to create a for loop that will run all of the commands on all of the files. As I try to figure out how to do this, I have continued through the steps using just one of the files in order to gain understanding of how to work with the data. As of right now, I have a text file that contains all of the clustered sequences for one of the demultiplexed files. The next step is to remove the homopolymers and run it through blast.
+
+#### _Goals for week 10_
+_I must first complete the pipeline by removing homopolymers and running the sequences through blast for the first demultiplexed file. By week 10, my goal is to complete all of these steps for the remaining 15 demultiplexed files. I plan to create a for loop in order to do this more easily, however will do it the long way if necessary. As of right now, I am ignoring all reverse complement sequences, however if time permits, I plan to go back into the pipeline and analyze those as well._
+
+_If I am able to run blast successly on the first demultiplexed file, I will call the a success, but my goal is to attempt to do this whole pipeline will all 16 files. My overall goal in this class was to gain an understanding of how these programs work and be able to navigate through them with some knowledge of what commands can do. I believe I have done that thus far, but am continuing to grow that knowledge every week._
+
+#### Update: Progress as of Week 9
+I have successfully completed the through step 9 on all the files using the xargs command for most of the functions. I then moved forward and blasted the clustered sequences against a local database of identified sequences that have come up in past projects in the lab. This database can be found in the "Blasting" folder. The blasted sequences are in a txt file (in "Analysis" and each have an abundance estimate represen
+ted by size. In an R Script, I loaded the files in "Analysis" and contrusted a new data frame that combines all of the information from each file into one table. This makes it easier to analyze or visualize later on. 
+
+## Results
+The heat map generated from the resulting taxa can be found [here] (https://github.com/fish546-2018/Cribari-eDNA/blob/master/Figures/Heat%20Map.png)
+
+_Bathycoccus_, a genus of green algae, are the most abundant taxa in most of samples. Twanoh state park also has a large abundance of _Cyclotella_, a small centric diatom. One of the samples labelled Twanoh F, is mistakenly the positive control for this sequencing run. It is easy to distiguish from the other samples because only taxa were identified, _Struthio_ (Ostrich) and _Alligator_. Theres were also the only occurances of these taxa. 
+
+Taxa that were only have in one sample include:
+- _Calanoida_ - Twanoh D - Copepod
+- _Calanus_ - Twanoh C - Copepod
+- _Dytiscidae_ - Twanoh C - Predaceous Diving Beetle
+- _Paranemertes_ - Twanoh B - Ribbon Worm
+- _Simuliidae_ - Twanoh C - Black Fly
+- _Synchaeta_ - Twanoh D - Rotifer
+
+## Next Steps
+The next step for this project would be to repeat the entire process with the remaining 5 libraries of sequencing data, with the ultimate goal of combining the data set and being able to see the distribution of species on a spatial scale. A more immediate goal would be to go back to this pipeline and include the reverse complemented data that have been excluded from this analysis. 
 
 ## Repository Directory Structure
 **In my directory I have included the following files:**
@@ -54,36 +101,6 @@ The "Demultiplexed" folder contains 16 FASTA files, one for each sample included
 "Tutorial" contains files that were used to learn the software and are not necessary for the eDNA project. 
 
 Finally, there is an R script called "BioInfoAbun" that contains the code to go from a blasted sequence txt file to a list of taxon and their abundance.
-
-
-## Project Timeline
-The following steps must be completed:
- - [x] 1. Visualize data with FASTQC
- - [x] 2. Merge paired-end reads with PEAR
- - [x] 3. Convert FASTQ to FASTA
- - [x] 4. Remove tags with cutadapt
- - [x] 5. Demultiplex sequences
- - [X] 6. Remove primers
- - [X] 7. Consolidate identical sequences with vsearch
- - [X] 8. Remove singletons with vsearch
- - [X] 9. Cluster sequences into OTUs using swarm
- - [X] 10. BLAST clusters using blastn
- - [ ] 11. Visualize Taxon abundances
-
-#### _Goals for weeks 4/5_
-_My goal is to complete at least steps 1-5 in the next few weeks. This will mean that the data contained in the FASTQ files with be cleaned, tag sequences will be removed, and I will be left with 16 demultiplexed sequences in FASTA format._
-
-#### Update: Progress as of Week 5
-At the end of week 5 I have completed 9 of 11 steps for one of the demultiplexed files. Because there are 16 files to be analyzed, the easiest way to run through the steps is to create a for loop that will run all of the commands on all of the files. As I try to figure out how to do this, I have continued through the steps using just one of the files in order to gain understanding of how to work with the data. As of right now, I have a text file that contains all of the clustered sequences for one of the demultiplexed files. The next step is to remove the homopolymers and run it through blast.
-
-#### _Goals for week 10_
-_I must first complete the pipeline by removing homopolymers and running the sequences through blast for the first demultiplexed file. By week 10, my goal is to complete all of these steps for the remaining 15 demultiplexed files. I plan to create a for loop in order to do this more easily, however will do it the long way if necessary. As of right now, I am ignoring all reverse complement sequences, however if time permits, I plan to go back into the pipeline and analyze those as well._
-
-_If I am able to run blast successly on the first demultiplexed file, I will call the a success, but my goal is to attempt to do this whole pipeline will all 16 files. My overall goal in this class was to gain an understanding of how these programs work and be able to navigate through them with some knowledge of what commands can do. I believe I have done that thus far, but am continuing to grow that knowledge every week._
-
-#### Update: Progress as of Week 9
-I have successfully completed the through step 9 on all the files using the xargs command for most of the functions. I then moved forward and blasted the clustered sequences against a local database of identified sequences that have come up in past projects in the lab. This database can be found in the "Blasting" folder. The blasted sequences are in a txt file (in "Analysis" and each have an abundance estimate represented by size. In an R Script, I loaded the files in "Analysis" and contrusted a new data frame that combines all of the information from each file into one table. This makes it easier to analyze or visualize later on. 
-
 
 ## Work Flow
 All script will be found inthr eDNA-Tides jupyter notebook. Before starting analysis, I wanted to visualize the data in a graphical format. To do this I used FASTQC. The program resulted in two zip files and two html files (one of each for the forward and reverse files. These files are included in th folder labeled "Raw".
