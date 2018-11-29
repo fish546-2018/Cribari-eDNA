@@ -36,7 +36,7 @@ I have successfully completed the through step 9 on all the files using the xarg
 ted by size. In an R Script, I loaded the files in "Analysis" and contrusted a new data frame that combines all of the information from each file into one table. This makes it easier to analyze or visualize later on. 
 
 ## Results
-The heat map generated from the resulting taxa can be found [here] (https://github.com/fish546-2018/Cribari-eDNA/blob/master/Figures/Heat%20Map.png)
+The heat map generated from the resulting taxa can be found [here](https://github.com/fish546-2018/Cribari-eDNA/blob/master/Figures/Heat%20Map.png)
 
 _Bathycoccus_, a genus of green algae, are the most abundant taxa in most of samples. Twanoh state park also has a large abundance of _Cyclotella_, a small centric diatom. One of the samples labelled Twanoh F, is mistakenly the positive control for this sequencing run. It is easy to distiguish from the other samples because only taxa were identified, _Struthio_ (Ostrich) and _Alligator_. Theres were also the only occurances of these taxa. 
 
